@@ -1,0 +1,21 @@
+/* Cloak elements on initial load to hide the possible display of {{ ... }} 
+ * Add to the app tag or to specific tags
+ * To display "loading...", change to the following:
+ *    [v-cloak] > * { display:none }
+ *    [v-cloak]::before { content: "loading…" }
+ */
+[v-cloak] { display: none; }
+
+.tabela {
+    display: flex;
+}
+
+table td{
+    border: black solid 1px;
+    padding: 5px;
+}
+
+img {
+    margin-left: 20px;
+    padding: 10px;
+}

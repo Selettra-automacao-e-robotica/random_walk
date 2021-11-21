@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CLEAN</title>
+    <meta name="description" content="Interface Random-Walk">
+
+    <link rel="icon" href="./img/logo_bola.png">
+
+    <!-- Your own CSS -->
+    <link type="text/css" rel="stylesheet" href="./index.css" media="all">
+
+</head><body>
+
+    <div id="app" v-cloak>
+            <h1>Clean</h1>
+            <div class="tabela">                
+                <table>
+                    <tr>
+                        <td>
+                            Porcentagem bateria:
+                        </td>
+                        <td>
+                            {{batery_porc}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Estado:
+                        </td>
+                        <td>
+                            {{amr_state}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Modo manual:
+                        </td>
+                        <td>
+                            {{manual_mode}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Tempo em Minutos:
+                        </td>
+                        <td>
+                            {{display_timer_minutes}}:{{display_timer_seconds}}
+                        </td>
+                    </tr>             
+                </table>
+                <img src="./img/img_amr_1.png" width="200px" alt="">
+            </div>
+            
+            
+            <button @click="amr_start">Play</button>
+            <button @click="amr_pause">Pause</button>
+            <button @click="amr_cancel">Cancel</button>
+            <label for="modo_manual">Modo Manual: <input @click="amr_manual_mode()" id="modo_manual" type="checkbox" v-model="manual_mode" :checked="manual_mode"></label>
+            <label for="ajuste_timer">Ajuste Timer: <input id="ajuste_timer" v-model="timer" type="number" value="60"> </label>
+        
+    </div>
+
+    <!-- These MUST be in the right order. Note no leading / -->
+
+    <!-- REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection -->
+    <script src="../uibuilder/vendor/socket.io/socket.io.js"></script>
+
+    <!-- Vendor Libraries - Load in the right order, use minified, production versions for speed -->
+    <script src="../uibuilder/vendor/vue/dist/vue.js"></script> <!-- dev version with component compiler -->
+    <!-- <script src="../uibuilder/vendor/vue/dist/vue.min.js"></script>   prod version with component compiler -->
+    <!-- <script src="../uibuilder/vendor/vue/dist/vue.runtime.min.js"></script>   prod version without component compiler -->
+    <script src="../uibuilder/vendor/bootstrap-vue/dist/bootstrap-vue.js"></script> <!-- Dev version -->
+    <!-- <script src="../uibuilder/vendor/bootstrap-vue/dist/bootstrap-vue.min.js"></script>   Prod version -->
+
+    <!-- REQUIRED: Sets up Socket listeners and the msg object -->
+    <script src="./uibuilderfe.js"></script> <!-- dev version -->
+    <!-- <script src="./uibuilderfe.min.js"></script>     prod version -->
+
+    <!-- OPTIONAL: You probably want this. Put your custom code here -->
+    <script src="./index.js"></script>
+
+</body></html>
