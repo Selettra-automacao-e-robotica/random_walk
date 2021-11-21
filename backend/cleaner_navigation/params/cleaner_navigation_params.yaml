@@ -1,0 +1,12 @@
+#RobotControl
+move_topic: '/cmd_vel' #ajusta nome do tópico para movimentar o robô
+laser_topic: '/scan' #ajusta nome do tópico que publica dados do scanner
+odom: '/odom' #ajusta nome do tópico que publica dados de odometria
+odom_frame: '/odom' #ajusta nome do quadro de odometria do robô
+base_frame: '/base_link' #ajusta quadro base_link do robô
+linear_vel: 0.25 #ajusta velocidade linear do robô
+angular_vel: 0.5 #ajusta velocidade angular do robô
+
+#Cleaner_navigation
+laser_angle_max: 275 #ajusta alcance angular do scanner
+range_turn: 0.5 #ajusta distância do objeto em que o robô faz manobra de giro

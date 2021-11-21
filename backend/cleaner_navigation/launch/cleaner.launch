@@ -1,0 +1,7 @@
+<launch>
+    <!-- Antes de iniciar esse launch você deve ter iniciado o robô (ou o simulador) junto com os pacotes gmapping e move-base. Caso contrário não irá funcionar -->
+   <node pkg="cleaner_navigation" type="cleaner_navigation.py" name="amr_cleaner_navigation_node" output="screen">
+       <rosparam file="$(find cleaner_navigation)/params/cleaner_navigation_params.yaml" command="load" ns="" />
+   </node>
+</launch>
+    
