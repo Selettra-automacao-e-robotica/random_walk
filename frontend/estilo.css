@@ -1,0 +1,137 @@
+
+body{
+    background-color: rgba(28,28,28);
+}
+
+
+label{
+    color: white;
+    font-size: 20px;
+}
+p{
+    color: white;
+    font-size: 20px;
+}
+h1{
+    font-size: 20px;
+    color: white;
+}
+
+h3{
+    color: white;
+    font-size: 20px;
+}
+img.logo{
+    position: relative;
+    bottom: -30px;
+    left: 550px;
+}
+
+progress {
+-webkit-appearance: none;
+}
+::-webkit-progress-value {
+    background-color:  #419f4a;
+}
+::-webkit-progress-bar {
+ background-color: white;
+}
+.icones{
+    text-align: center;
+}
+.icones #play{
+    padding: 2%;
+}
+.icones #pause{
+    padding: 2%;
+}
+.icones #power{
+    padding: 2%;
+}
+.liga-desliga__checkbox {
+    position: absolute;
+    left: -9999px;
+}
+
+.liga-desliga__botao {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.liga-desliga__botao::before,
+.liga-desliga__botao::after {
+    content: "";
+    box-shadow: 0 0 0 1px #CCC;
+    transition: all 0.2s ease;
+}
+
+.liga-desliga__botao::before {
+    display: inline-block;
+    border-radius: 1em;
+    height: 1em;
+    width: 2em;
+    margin-right: 0.5em;
+    background: #000000;
+}
+
+.liga-desliga__botao::after {
+    position: absolute;
+    top: 0.20em;
+    left: 0.75em;
+    width: 0.95em;
+    height: 0.95em; 
+    border-radius: 100%;
+    background: #D48F04;
+    
+
+}
+
+.liga-desliga__checkbox:checked + .liga-desliga__botao::before {
+    background: #000000;
+    content: "";
+}
+
+.liga-desliga__checkbox:checked + .liga-desliga__botao::after {
+    left: 2.025em;
+}
+
+.liga-desliga__checkbox:focus + .liga-desliga__botao::before {
+    outline: 3px dotted #000000;
+
+}
+.manual{
+    top: 52px;
+    color: rgb(255, 255, 255);
+    padding: 132px;
+    margin-top: -110px;
+    margin-left: 36%;
+    font-size: 20pt;
+}
+.automatico {
+    top: 66px;
+    color: rgb(255, 255, 255);
+    padding: 132px;
+    margin-left: 47%;
+    margin-top: -297px;
+    font-size: 20pt;
+}
+#controle{
+    margin-left: 75%;
+    margin-top: -9%;
+}
+#ajuda{
+    margin-left: 75%;
+    margin-top: -9%;
+}
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+    width: 30%;
+}
+
