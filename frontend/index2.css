@@ -1,0 +1,24 @@
+.batteryHelpOff{
+    position: relative; bottom: 11px; font-size: x-large;
+}
+.batteryHelpOn{
+    position: relative; bottom: 11px; font-size: x-large; border: 2px solid #D48F04;
+}
+.percetBattery{
+    position: relative; bottom: 11px; font-size: x-large;
+}
+.statusJob{
+    font-size: xx-large;
+}
+.vlrTimmer{
+    color: #D48F04; font-size: 20px;
+}
+.options, .card{
+    border: 0px solid rgba(0,0,0,.125);
+}
+.options, .card-body{
+    background-color: #1b1a1a; border-color: #1b1a1a; padding: 0%;
+}
+.screenHelpOptionsOn{
+    border: 5px solid #D48F04; height: 452px; background-color: #1b1a1a;
+}
