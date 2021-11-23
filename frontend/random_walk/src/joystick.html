@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CLEAN</title>
+    <meta name="description" content="Interface Random-Walk">
+
+    <link rel="icon" href="./img/logo_bola.png">
+    <link type="text/css" rel="stylesheet" href="../uibuilder/vendor/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="../uibuilder/vendor/bootstrap-vue/dist/bootstrap-vue.css" />
+    <link type="text/css" rel="stylesheet" href="./index.css" media="all">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    
+</head><body>
+
+    <div id="app" v-cloak>
+        <div class="container-fluid text-white">
+            <div class="row">
+              <div class="col-sm-8 offset-4">
+                <img src="./img/logoselettra.png" alt="" height="150">
+              </div>
+              <div class="col-sm-6 my-5">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div v-if="screenOfHelp == 0" class="batteryHelpOff col-sm-2">
+                          <strong>BATERIA: </strong>
+                        </div>
+                        <div v-if="screenOfHelp == 1" class="batteryHelpOn col-sm-2">
+                          <strong>BATERIA: </strong>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="progress">
+                            <div :class="'progress-bar progress-bar-striped bg-' + colorPercentBattery" role="progressbar" :style="{ 'width': percentBattery + '%' }" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                        <div class="percetBattery col-sm-2 text-center">
+                         <strong> {{ percentBattery }} %</strong>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="statusJob col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-2"> <strong>  STATUS: </strong> </div>
+                        <div :class="'col-sm-10 text-' + statusColorJob"> <strong> {{ statusJobDesc }} </strong></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-1 offset-sm-5 my-5">
+                <div class="timmer">
+                  <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i>  
+                    </div>
+                    <div class="col-sm-12 text-center">
+                      <strong><u class="vlrTimmer">{{display_timer_minutes}}:{{display_timer_seconds}}</u> Minutos</strong>                      
+                    </div>
+                    <label for="ajuste_timer">Ajuste Timer: <input id="ajuste_timer" v-model="timer" style="width: 100px;" type="number" value="60"> </label>
+                  </div>
+                </div>
+              </div>
+			  <!-- Joystick -->
+			  <div class="joystick-conteiner">
+				<div class="joystick" id="zone_joystick"></div>
+			  </div>
+			  
+			  <!--  -->              
+              <div class="col-sm-12 my-5">
+                <div class="row">
+                  <div v-if="screenOfHelp == true" class="col-sm-1">
+                    <i type="button" v-on:click="chageStatusScreenHelp(0)" class="btn fa fa-question-circle-o fa-4x" aria-hidden="true"></i>
+                  </div>
+                  <div v-if="screenOfHelp == false" class="col-sm-1">
+                    <i type="button" v-on:click="chageStatusScreenHelp(1)" class="btn fa fa-question-circle-o fa-4x" aria-hidden="true"></i>
+                  </div>
+                  <div class="col-sm-4 offset-3 text-center">
+                    <div class="row">
+                      <div  v-if="topicMode == 'manual'" class="col-sm-4" style="font-size: xx-large;">
+                        <strong class="text-danger">MANUAL</strong>
+                      </div>
+                      <div v-else class="col-sm-4" style="font-size: xx-large;">
+                        <strong>MANUAL</strong>
+                      </div>
+                      <div class="col-sm-4">
+                        <div v-if="topicMode == 'automatic'">
+                          <button type="button" v-on:click="changeMode('manual')" class="btn btn-link" style="color: #D48F04"><i class="fa fa-toggle-on fa-3x"></i></button>
+                        </div>
+                        <div v-else>
+                          <button type="button" v-on:click="changeMode('automatic')" class="btn btn-link" style="color: #D48F04"><i class="fa fa-toggle-off fa-3x"></i></button>
+                        </div>
+                      </div>
+                      <div  v-if="topicMode == 'automatic'" class="col-sm-4" style="font-size: xx-large;">
+                        <strong class="text-danger">AUTOMATICO</strong>
+                      </div>
+                      <div v-else class="col-sm-4" style="font-size: xx-large;">
+                        <strong>AUTOMATICO</strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-1 offset-3">
+                    <img type="button" class="btn" v-on:click="redirectToHome()" src="./img/controle.png" alt="" height="100" style="position: relative; bottom: 18px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>    
+    </div>
+
+    <!-- These MUST be in the right order. Note no leading / -->
+
+    <!-- REQUIRED: Socket.IO is loaded only once for all instances. Without this, you don't get a websocket connection -->
+    <script src="../uibuilder/vendor/socket.io/socket.io.js"></script>
+
+    <!-- Vendor Libraries - Load in the right order, use minified, production versions for speed -->
+    <script src="../uibuilder/vendor/vue/dist/vue.js"></script> <!-- dev version with component compiler -->
+    <!-- <script src="../uibuilder/vendor/vue/dist/vue.min.js"></script>   prod version with component compiler -->
+    <!-- <script src="../uibuilder/vendor/vue/dist/vue.runtime.min.js"></script>   prod version without component compiler -->
+    <script src="../uibuilder/vendor/bootstrap-vue/dist/bootstrap-vue.js"></script> <!-- Dev version -->
+    <!-- <script src="../uibuilder/vendor/bootstrap-vue/dist/bootstrap-vue.min.js"></script>   Prod version -->
+
+    <!-- REQUIRED: Sets up Socket listeners and the msg object -->
+    <script src="./uibuilderfe.js"></script> <!-- dev version -->
+    <!-- <script src="./uibuilderfe.min.js"></script>     prod version -->
+
+    <!-- OPTIONAL: You probably want this. Put your custom code here -->
+    <script src="./nipplejs.js"></script>
+	<script src="./index.js"></script>
+
+</body></html>
