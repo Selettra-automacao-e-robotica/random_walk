@@ -17,6 +17,12 @@
 </head><body>
 
     <div id="app" v-cloak>
+      <div @mousedown="mouseDown">    
+          <div v-if="screenOfHelp == true">
+            <div id="img_help">
+          </div>
+      </div>
+      <div v-if="screenOfHelp == false">
         <div class="container-fluid text-white">
             <div class="row">
               <div class="col-sm-8 offset-4">
@@ -59,9 +65,11 @@
                       <i class="fa fa-clock-o fa-4x" aria-hidden="true"></i>  
                     </div>
                     <div class="col-sm-12 text-center">
-                      <strong><u class="vlrTimmer">{{display_timer_minutes}}:{{display_timer_seconds}}</u> Minutos</strong>                      
+                      <strong><u class="vlrTimmer" @mousedown=setTimer() >{{display_timer_minutes}}:{{display_timer_seconds}}</u> Minutos</strong>
+                      <div v-if="timerChange == true">
+                        <input type="text" class="form-control" v-model="timer">
+                      </div>                   
                     </div>
-                    <label for="ajuste_timer">Ajuste Timer: <input id="ajuste_timer" v-model="timer" style="width: 100px;" type="number" value="60"> </label>
                   </div>
                 </div>
               </div>
@@ -120,10 +128,10 @@
               <div class="col-sm-12 my-5">
                 <div class="row">
                   <div v-if="screenOfHelp == true" class="col-sm-1">
-                    <i type="button" v-on:click="chageStatusScreenHelp(0)" class="btn fa fa-question-circle-o fa-4x" aria-hidden="true"></i>
+                    <i type="button" v-on:click="chageStatusScreenHelp(0)" class="btn fa fa-question-circle-o fa-4x text-white" aria-hidden="true"></i>
                   </div>
                   <div v-if="screenOfHelp == false" class="col-sm-1">
-                    <i type="button" v-on:click="chageStatusScreenHelp(1)" class="btn fa fa-question-circle-o fa-4x" aria-hidden="true"></i>
+                    <i type="button" v-on:click="chageStatusScreenHelp(1)" class="btn fa fa-question-circle-o fa-4x text-white" aria-hidden="true"></i>
                   </div>
                   <div class="col-sm-4 offset-3 text-center">
                     <div class="row">
@@ -155,7 +163,9 @@
                 </div>
               </div>
             </div>
-          </div>    
+          </div>   
+        </div> 
+      </div>
     </div>
 
     <!-- These MUST be in the right order. Note no leading / -->

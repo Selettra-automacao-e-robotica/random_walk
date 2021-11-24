@@ -41,3 +41,19 @@ body {
 .screenHelpOptionsOn{
     border: 5px solid #D48F04; height: 452px; background-color: #1b1a1a;
 }
+#img_help{
+    position: fixed; /* posição fixa para que a possível rolagem da tela não revele espaços em branco */
+    width: 100%;
+    height: 100vh;
+    background-image: url('./img/fundo_help.png');
+    background-repeat: no-repeat;
+    text-align: center;
+}
+#img_help_2{
+    position: fixed; /* posição fixa para que a possível rolagem da tela não revele espaços em branco */
+    width: 100%;
+    height: 100vh;
+    background-image: url('./img/fundo_help_2.png');
+    background-repeat: no-repeat;
+    text-align: center;
+}
