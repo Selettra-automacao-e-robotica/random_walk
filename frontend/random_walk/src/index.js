@@ -31,7 +31,7 @@ const app = new Vue({
         display_timer_minutes: 60,
         display_timer_seconds: 0,
         message: 'Olá Vue!',        
-        percentBattery: 30,
+        percentBattery: 0,
         colorPercentBattery: '',
         statusJobDesc: '',
         statusColorJob: '',
@@ -42,6 +42,7 @@ const app = new Vue({
         envia_ang: 0,
         envia_motor: 0,
         envia_valor: 0,
+        timerChange: false,
 
     }}, // --- End of data --- //
 
@@ -50,8 +51,18 @@ const app = new Vue({
 
     }, // --- End of computed --- //
 
-    methods: {        
-        
+    methods: {  
+        setTimer(){
+            this.timerChange = true
+        },
+        mouseDown(){
+            if(this.screenOfHelp == true){
+                this.screenOfHelp = false;
+            }
+            if(this.timerChange == true){
+                this.timerChange = false;
+            }
+        },
         amr_start(){
 
             if(app.timer>0 && app.amr_state != 'Realizando Tarefa'){
