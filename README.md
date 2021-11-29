@@ -10,11 +10,12 @@
 
 ### RESULTADOS OBTIDOS
 
+Vídeo mostrando a utilização do sistema:
 
 https://user-images.githubusercontent.com/68859813/143958493-f33cfed6-cccd-499e-9f3c-c7f2e30d93c5.mp4
 
 
-
+Rastro de odometria obtido após circular pelo ambiente em um prazo de 60 minutos:
 
 ![image](https://user-images.githubusercontent.com/68859813/143956850-c8667eb6-aff8-41f6-92f2-a0227ef21bd6.png)
 
