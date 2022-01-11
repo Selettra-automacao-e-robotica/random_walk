@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # RANDOM WALK NAVIGATION
 
 ## DESCRICÃO
@@ -120,6 +119,3 @@ Rastro de odometria obtido após circular pelo ambiente em um prazo de 60 minuto
 </table>
 
 ## Quaisqueres dúvidas, sugestões ou atualizações pode ficar a vontade para entrar em contato!!!
-=======
-# random_walk
->>>>>>> dce8db4 (Initial commit)
